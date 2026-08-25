@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/GESTIONDUPAIEMENTJFrame.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/GESTIONDELAFACTUREJFrame.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/GESTIONDESPATIENTSJFrame.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/GESTIONDESCONSULTATIONSJFrame.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/controllers/PatientJpaController.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/controllers/PaiementJpaController.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/controllers/MedecinJpaController.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/controllers/FactureJpaController.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/gestiondesconsultationstepaiements/GESTIONDESCONSULTATIONSTEPAIEMENTS.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/CONNEXIONJFrame.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/GESTIONDESMEDECINSJFrame.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/entities/Facture.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/entities/Medecin.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/ImprimerJFrame.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/MenuPrincipalJFrame.java</file>
+        </group>
+    </open-files>
+</project-private>
