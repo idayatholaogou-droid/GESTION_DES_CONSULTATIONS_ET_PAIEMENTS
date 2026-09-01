@@ -96,7 +96,7 @@ public class PaiementJpaController {
         return null;
     }
 
-    // — MAPPING —
+    
     private Paiement mapResultSet(ResultSet rs) throws SQLException {
         Paiement p = new Paiement();
         p.setIdPaie(rs.getString("IdPaie"));

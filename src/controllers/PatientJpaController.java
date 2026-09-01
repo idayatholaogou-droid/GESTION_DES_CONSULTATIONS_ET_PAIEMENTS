@@ -120,7 +120,9 @@ public class PatientJpaController {
     }
     return null;
     }
-    private Patient mapResultSet(ResultSet rs) throws SQLException {
+  
+    
+   private Patient mapResultSet(ResultSet rs) throws SQLException {
     Patient p = new Patient();
     p.setIdPatient(rs.getString("IdPatient"));
     p.setNomPatient(rs.getString("NomPatient"));

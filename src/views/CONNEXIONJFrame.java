@@ -86,6 +86,7 @@ public class CONNEXIONJFrame extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Enregistrer");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setText("Fermer");
@@ -178,35 +179,71 @@ public class CONNEXIONJFrame extends javax.swing.JFrame {
 
     private void btnConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnecterActionPerformed
         // TODO add your handling code here:
-    String nomUtilisateur = txtNomUtilisateur.getText().trim();
-String motDePasse = new String(txtMotDePasse.getPassword()).trim();
+      
+    String email = txtNomUtilisateur.getText().trim();
+    String motDePasse = new String(txtMotDePasse.getPassword()).trim();
 
-if (nomUtilisateur.isEmpty() || motDePasse.isEmpty()) {
-    JOptionPane.showMessageDialog(this,
-        "Veuillez remplir tous les champs.",
-        "Erreur", JOptionPane.ERROR_MESSAGE);
-    return;
-}
+    if (email.isEmpty() || motDePasse.isEmpty()) {
+        JOptionPane.showMessageDialog(this,
+            "Veuillez remplir tous les champs.",
+            "Erreur", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-if (nomUtilisateur.equals("PROUDLY") && motDePasse.equals("1412")) {
-    MenuPrincipalJFrame menu = new MenuPrincipalJFrame();
-    menu.setLocationRelativeTo(null);
-    menu.setResizable(false);
-    menu.setVisible(true);
-    this.dispose();
-} else {
+    controllers.PersonnelJpaController personnelCtrl = new controllers.PersonnelJpaController();
+    controllers.PatientJpaController patientCtrl = new controllers.PatientJpaController();
+    controllers.MedecinJpaController medecinCtrl = new controllers.MedecinJpaController();
+
+    entities.Personnel personnel = personnelCtrl.trouverParEmail(email);
+    if (personnel != null && motDePasse.equals(personnel.getMotDePasse())) {
+        MenuPrincipalJFrame menu = new MenuPrincipalJFrame();
+        menu.setLocationRelativeTo(null);
+        menu.setResizable(false);
+        menu.setVisible(true);
+        this.dispose();
+        return;
+    }
+
+    entities.Patient patient = patientCtrl.trouverParEmail(email);
+    if (patient != null && motDePasse.equals(patient.getMotDePasse())) {
+        MenuPrincipalJFrame menu = new MenuPrincipalJFrame();
+        menu.setLocationRelativeTo(null);
+        menu.setResizable(false);
+        menu.setVisible(true);
+        this.dispose();
+        return;
+    }
+
+    entities.Medecin medecin = medecinCtrl.trouverParEmail(email);
+    if (medecin != null && motDePasse.equals(medecin.getMotDePasse())) {
+        MenuPrincipalJFrame menu = new MenuPrincipalJFrame();
+        menu.setLocationRelativeTo(null);
+        menu.setResizable(false);
+        menu.setVisible(true);
+        this.dispose();
+        return;
+    }
+
     JOptionPane.showMessageDialog(this,
         "Nom d'utilisateur ou mot de passe incorrect.",
         "Erreur de connexion", JOptionPane.ERROR_MESSAGE);
     txtMotDePasse.setText("");
     txtNomUtilisateur.requestFocus();
-}
+
     }//GEN-LAST:event_btnConnecterActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    INSCRIPTIONJFrame inscription = new INSCRIPTIONJFrame();
+    inscription.setLocationRelativeTo(null);
+    inscription.setResizable(false);
+    inscription.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

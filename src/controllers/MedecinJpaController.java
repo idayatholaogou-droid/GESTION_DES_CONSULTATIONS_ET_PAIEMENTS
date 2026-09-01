@@ -131,18 +131,18 @@ public class MedecinJpaController {
     }
     return null;
 }
-   private Medecin mapResultSet(ResultSet rs) throws SQLException {
-        Medecin m = new Medecin();
-        m.setIdMedecin(rs.getString("IdMedecin"));
-        m.setNomMedecin(rs.getString("NomMedecin"));
-        m.setPrenomMedecin(rs.getString("PrenomMedecin"));
-        m.setSpecialite(rs.getString("Specialite"));
-        m.setEmailMedecin(rs.getString("EmailMedecin"));
-        m.setMotDePasse(rs.getString("MotDePasse"));
-        m.setCodeReset(rs.getString("CodeReset"));
-        m.setDateExpirationCode(rs.getTimestamp("DateExpirationCode"));
-        return m;
-    }
+  private Medecin mapResultSet(ResultSet rs) throws SQLException {
+    Medecin m = new Medecin();
+    m.setIdMedecin(rs.getString("IdMedecin"));
+    m.setNomMedecin(rs.getString("NomMedecin"));
+    m.setPrenomMedecin(rs.getString("PrenomMedecin"));
+    m.setSpecialite(rs.getString("Specialite"));
+    m.setEmailMedecin(rs.getString("EmailMedecin"));
+    m.setMotDePasse(rs.getString("MotDePasse"));
+    m.setCodeReset(rs.getString("CodeReset"));
+    m.setDateExpirationCode(rs.getTimestamp("DateExpirationCode"));
+    return m;
+}
 }
     
 

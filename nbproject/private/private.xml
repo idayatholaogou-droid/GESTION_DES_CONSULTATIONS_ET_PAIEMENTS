@@ -18,6 +18,13 @@
             <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/entities/Medecin.java</file>
             <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/ImprimerJFrame.java</file>
             <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/MenuPrincipalJFrame.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/entities/Paiement.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/VérificationDuCodeJFrame.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/views/MotDePasseOubliéJFrame.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/controllers/DatabaseConfig.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/entities/Patient.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/entities/Personnel.java</file>
+            <file>file:/C:/Users/Idayath/Documents/NetBeansProjects/GESTIONDESCONSULTATIONSTEPAIEMENTS/src/controllers/PersonnelJpaController.java</file>
         </group>
     </open-files>
 </project-private>
