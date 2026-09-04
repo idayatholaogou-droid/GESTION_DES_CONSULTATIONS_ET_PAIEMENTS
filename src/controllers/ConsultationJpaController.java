@@ -98,6 +98,20 @@ public class ConsultationJpaController {
         }
         return liste;
     }
+    public List<Consultation> listerParPatient(String idPatient) {
+    List<Consultation> liste = new ArrayList<>();
+    String sql = "SELECT * FROM consultation WHERE \"IdPatient\"=? ORDER BY dateconsult DESC";
+    try {
+        Connection conn = getConn();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, idPatient);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) liste.add(mapResultSet(rs));
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return liste;
+}
 
     private Consultation mapResultSet(ResultSet rs) throws SQLException {
         Consultation c = new Consultation();
@@ -111,3 +125,5 @@ public class ConsultationJpaController {
         return c;
     }
 }
+
+    

@@ -196,7 +196,7 @@ public class CONNEXIONJFrame extends javax.swing.JFrame {
 
     entities.Personnel personnel = personnelCtrl.trouverParEmail(email);
     if (personnel != null && motDePasse.equals(personnel.getMotDePasse())) {
-        MenuPrincipalJFrame menu = new MenuPrincipalJFrame(personnel.getRole());
+        MenuPrincipalJFrame menu = new MenuPrincipalJFrame(personnel.getRole(), personnel.getIdPersonnel());
         menu.setLocationRelativeTo(null);
         menu.setResizable(false);
         menu.setVisible(true);
@@ -206,7 +206,7 @@ public class CONNEXIONJFrame extends javax.swing.JFrame {
 
     entities.Patient patient = patientCtrl.trouverParEmail(email);
     if (patient != null && motDePasse.equals(patient.getMotDePasse())) {
-       MenuPrincipalJFrame menu = new MenuPrincipalJFrame("Patient");
+       MenuPrincipalJFrame menu = new MenuPrincipalJFrame("Patient", patient.getIdPatient());
         menu.setLocationRelativeTo(null);
         menu.setResizable(false);
         menu.setVisible(true);
@@ -216,7 +216,7 @@ public class CONNEXIONJFrame extends javax.swing.JFrame {
 
     entities.Medecin medecin = medecinCtrl.trouverParEmail(email);
     if (medecin != null && motDePasse.equals(medecin.getMotDePasse())) {
-        MenuPrincipalJFrame menu = new MenuPrincipalJFrame("Médecin");
+        MenuPrincipalJFrame menu = new MenuPrincipalJFrame("Médecin", medecin.getIdMedecin());
         menu.setLocationRelativeTo(null);
         menu.setResizable(false);
         menu.setVisible(true);

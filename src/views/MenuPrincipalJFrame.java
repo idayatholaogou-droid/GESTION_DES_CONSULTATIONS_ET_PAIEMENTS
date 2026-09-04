@@ -30,16 +30,18 @@ public class MenuPrincipalJFrame extends JFrame {
     
     
     private String roleConnecte;
-    public MenuPrincipalJFrame(String role) {
+    private String idConnecte;
+
+    public MenuPrincipalJFrame(String role, String idConnecte) {
         this.roleConnecte = role;
+        this.idConnecte = idConnecte;
         setTitle("Système de Gestion Médicale");
         setSize(960, 620);
         setMinimumSize(new Dimension(800, 550));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         initComponents();
-}
-
+    }
     private void initComponents() {
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(COLOR_BG);
@@ -420,7 +422,13 @@ public class MenuPrincipalJFrame extends JFrame {
         switch (module) {
             case "Médecins"      -> new GESTIONDESMEDECINSJFrame().setVisible(true);
             case "Patients"      -> new GESTIONDESPATIENTSJFrame().setVisible(true);
-            case "Consultations" -> new GESTIONDESCONSULTATIONSJFrame().setVisible(true);
+            case "Consultations" -> {
+                if ("Médecin".equals(roleConnecte)) {
+                new GESTIONDESCONSULTATIONSJFrame(idConnecte).setVisible(true);
+                } else {
+                     new GESTIONDESCONSULTATIONSJFrame().setVisible(true);
+                }
+                }
             case "Factures"      -> new GESTIONDELAFACTUREJFrame().setVisible(true);
             case "Paiements"     -> new GESTIONDUPAIEMENTJFrame().setVisible(true);
         }
@@ -430,7 +438,7 @@ public class MenuPrincipalJFrame extends JFrame {
     SwingUtilities.invokeLater(() -> {
         try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
         catch (Exception ignored) {}
-        new MenuPrincipalJFrame("Administrateur").setVisible(true);
+       new MenuPrincipalJFrame("Administrateur", "E001").setVisible(true);
     });
 }
 }

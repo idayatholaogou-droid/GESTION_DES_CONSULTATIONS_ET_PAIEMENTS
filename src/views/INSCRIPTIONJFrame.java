@@ -165,7 +165,8 @@ private static class PaysRenderer extends javax.swing.DefaultListCellRenderer {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Mot de Passe");
 
-        cbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Medecin", "Sécrétaire", "Caissier", "Administrateur", " " }));
+        cbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Médecin", "Sécrétaire", "Caissier", "Administrateur", "" }));
+        cbRole.addActionListener(this::cbRoleActionPerformed);
 
         txtNom.setText("jTextField1");
         txtNom.addActionListener(this::txtNomActionPerformed);
@@ -422,6 +423,10 @@ entities.Pays paysChoisi = (entities.Pays) selection;
     return String.format("%s%03d", prefixe, prochain);
 
     }//GEN-LAST:event_btnCreerCompteActionPerformed
+
+    private void cbRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRoleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbRoleActionPerformed
 
     /**
      * @param args the command line arguments
