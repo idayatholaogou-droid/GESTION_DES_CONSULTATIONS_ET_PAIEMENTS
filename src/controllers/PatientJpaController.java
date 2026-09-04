@@ -22,29 +22,30 @@ public class PatientJpaController {
     }
  
     public boolean inserer(Patient p) {
-        String sql = "INSERT INTO patient(\"IdPatient\", \"NomPatient\", \"PrenomPatient\", \"Age\", \"Telephone\", \"EmailPatient\") VALUES(?,?,?,?,?,?)";
-        try {
-            Connection conn = getConn();
-            if (conn == null) {
+    String sql = "INSERT INTO patient(\"IdPatient\", \"NomPatient\", \"PrenomPatient\", \"Age\", \"Telephone\", \"EmailPatient\", \"MotDePasse\") VALUES(?,?,?,?,?,?,?)";
+    try {
+        Connection conn = getConn();
+        if (conn == null) {
             System.out.println("ERREUR : connexion impossible !");
             return false;
         }
         System.out.println("Connexion OK");
         System.out.println("ID : " + p.getIdPatient());
         System.out.println("Nom : " + p.getNomPatient());
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, p.getIdPatient());
-            ps.setString(2, p.getNomPatient());
-            ps.setString(3, p.getPrenomPatient());
-            ps.setInt(4, p.getAge());
-            ps.setString(5, p.getTelephone());
-            ps.setString(6, p.getEmailPatient());
-            return ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, p.getIdPatient());
+        ps.setString(2, p.getNomPatient());
+        ps.setString(3, p.getPrenomPatient());
+        ps.setInt(4, p.getAge());
+        ps.setString(5, p.getTelephone());
+        ps.setString(6, p.getEmailPatient());
+        ps.setString(7, p.getMotDePasse());
+        return ps.executeUpdate() > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
     }
+}
 
     public boolean modifier(Patient p) {
         String sql = "UPDATE patient SET \"NomPatient\"=?, \"PrenomPatient\"=?, \"Age\"=?, \"Telephone\"=?, \"EmailPatient\"=? WHERE \"IdPatient\"=?";
@@ -64,7 +65,6 @@ public class PatientJpaController {
         }
     }
  
-    // ── SUPPRIMER ────────────────────────────────────────────
     public boolean supprimer(String id) {
         String sql = "DELETE FROM patient WHERE \"IdPatient\"=?";
         try {
@@ -78,7 +78,6 @@ public class PatientJpaController {
         }
     }
  
-    // ── TROUVER PAR ID ───────────────────────────────────────
     public Patient trouverParId(String id) {
         String sql = "SELECT * FROM patient WHERE \"IdPatient\"=?";
         try {
@@ -121,7 +120,6 @@ public class PatientJpaController {
     return null;
     }
   
-    
    private Patient mapResultSet(ResultSet rs) throws SQLException {
     Patient p = new Patient();
     p.setIdPatient(rs.getString("IdPatient"));

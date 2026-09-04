@@ -27,14 +27,18 @@ public class MenuPrincipalJFrame extends JFrame {
     private static final Color COLOR_DANGER        = new Color(162, 45, 45);
     private static final Color COLOR_PURPLE        = new Color(127, 119, 221);
 
-    public MenuPrincipalJFrame() {
+    
+    
+    private String roleConnecte;
+    public MenuPrincipalJFrame(String role) {
+        this.roleConnecte = role;
         setTitle("Système de Gestion Médicale");
         setSize(960, 620);
         setMinimumSize(new Dimension(800, 550));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         initComponents();
-    }
+}
 
     private void initComponents() {
         JPanel root = new JPanel(new BorderLayout());
@@ -155,39 +159,57 @@ public class MenuPrincipalJFrame extends JFrame {
     }
 
     private JPanel buildNavCard() {
-        JPanel card = createRoundedCard(12);
-        card.setLayout(new BorderLayout());
-        card.setBorder(new EmptyBorder(16, 16, 16, 16));
+    JPanel card = createRoundedCard(12);
+    card.setLayout(new BorderLayout());
+    card.setBorder(new EmptyBorder(16, 16, 16, 16));
 
-        JLabel title = new JLabel("Navigation");
-        title.setFont(new Font("Segoe UI", Font.BOLD, 13));
-        title.setForeground(COLOR_MUTED);
-        title.setBorder(new EmptyBorder(0, 0, 12, 0));
-        card.add(title, BorderLayout.NORTH);
+    JLabel title = new JLabel("Navigation");
+    title.setFont(new Font("Segoe UI", Font.BOLD, 13));
+    title.setForeground(COLOR_MUTED);
+    title.setBorder(new EmptyBorder(0, 0, 12, 0));
+    card.add(title, BorderLayout.NORTH);
 
-        JPanel btnPanel = new JPanel(new GridLayout(5, 1, 0, 8));
-        btnPanel.setOpaque(false);
-        btnPanel.add(buildNavButton("Médecins",      "Gérer les profils médecins",  COLOR_PRIMARY_LIGHT));
-        btnPanel.add(buildNavButton("Patients",      "Dossiers et historiques",     COLOR_SUCCESS));
-        btnPanel.add(buildNavButton("Consultations", "Planifier et suivre",         COLOR_WARNING));
-        btnPanel.add(buildNavButton("Factures",      "Générer et exporter",         COLOR_PURPLE));
-        btnPanel.add(buildNavButton("Paiements",     "Transactions et soldes",      new Color(99, 179, 237)));
-        card.add(btnPanel, BorderLayout.CENTER);
+    java.util.List<JPanel> boutonsAutorises = new java.util.ArrayList<>();
 
-        JButton quit = new JButton("Quitter");
-        quit.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-        quit.setForeground(COLOR_DANGER);
-        quit.setBorderPainted(false);
-        quit.setContentAreaFilled(false);
-        quit.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        quit.addActionListener(e -> System.exit(0));
-        JPanel quitWrap = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 4));
-        quitWrap.setOpaque(false);
-        quitWrap.add(quit);
-        card.add(quitWrap, BorderLayout.SOUTH);
+    boolean estAdmin = "Administrateur".equals(roleConnecte);
 
-        return card;
+    if (estAdmin) {
+        boutonsAutorises.add(buildNavButton("Médecins", "Gérer les profils médecins", COLOR_PRIMARY_LIGHT));
     }
+    if (estAdmin || "Secrétaire".equals(roleConnecte)) {
+        boutonsAutorises.add(buildNavButton("Patients", "Dossiers et historiques", COLOR_SUCCESS));
+    }
+    if (estAdmin || "Secrétaire".equals(roleConnecte) || "Médecin".equals(roleConnecte) || "Patient".equals(roleConnecte)) {
+        boutonsAutorises.add(buildNavButton("Consultations", "Planifier et suivre", COLOR_WARNING));
+    }
+    if (estAdmin || "Caissier".equals(roleConnecte) || "Médecin".equals(roleConnecte) || "Patient".equals(roleConnecte)) {
+        boutonsAutorises.add(buildNavButton("Factures", "Générer et exporter", COLOR_PURPLE));
+    }
+    if (estAdmin || "Caissier".equals(roleConnecte) || "Médecin".equals(roleConnecte) || "Patient".equals(roleConnecte)) {
+        boutonsAutorises.add(buildNavButton("Paiements", "Transactions et soldes", new Color(99, 179, 237)));
+    }
+
+    JPanel btnPanel = new JPanel(new GridLayout(boutonsAutorises.size(), 1, 0, 8));
+    btnPanel.setOpaque(false);
+    for (JPanel b : boutonsAutorises) {
+        btnPanel.add(b);
+    }
+    card.add(btnPanel, BorderLayout.CENTER);
+
+    JButton quit = new JButton("Quitter");
+    quit.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+    quit.setForeground(COLOR_DANGER);
+    quit.setBorderPainted(false);
+    quit.setContentAreaFilled(false);
+    quit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    quit.addActionListener(e -> System.exit(0));
+    JPanel quitWrap = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 4));
+    quitWrap.setOpaque(false);
+    quitWrap.add(quit);
+    card.add(quitWrap, BorderLayout.SOUTH);
+
+    return card;
+}
 
     private JPanel buildNavButton(String label, String sub, Color accent) {
         JPanel btn = new JPanel(new BorderLayout(10, 0)) {
@@ -264,11 +286,11 @@ public class MenuPrincipalJFrame extends JFrame {
 
         JPanel list = new JPanel(new GridLayout(5, 1, 0, 6));
         list.setOpaque(false);
-        list.add(buildPatientRow("Aïcha Moussa",   "AM", COLOR_PRIMARY_LIGHT, "09h15", "Terminé",    COLOR_SUCCESS));
-        list.add(buildPatientRow("Kofi Benson",    "KB", COLOR_SUCCESS,       "10h30", "En attente", COLOR_WARNING));
-        list.add(buildPatientRow("Fatou Diallo",   "FD", COLOR_DANGER,        "11h00", "Urgent",     COLOR_DANGER));
-        list.add(buildPatientRow("Marc Ahouannou", "MA", COLOR_PURPLE,        "13h15", "Terminé",    COLOR_SUCCESS));
-        list.add(buildPatientRow("Sèna Koffi",     "SK", COLOR_WARNING,       "14h00", "En attente", COLOR_WARNING));
+        list.add(buildPatientRow("SANKARE Oumou",   "SO", COLOR_PRIMARY_LIGHT, "09h15", "Terminé",    COLOR_SUCCESS));
+        list.add(buildPatientRow("KEÏTA Fatou",    "KF", COLOR_SUCCESS,       "10h30", "En attente", COLOR_WARNING));
+        list.add(buildPatientRow("TRAORE Naîsha",   "TN", COLOR_DANGER,        "11h00", "Urgent",     COLOR_DANGER));
+        list.add(buildPatientRow("SAGBO Fifamè Glawdys", "SG", COLOR_PURPLE,        "13h15", "Terminé",    COLOR_SUCCESS));
+        list.add(buildPatientRow("DOSSOU Rébécca",     "DR", COLOR_WARNING,       "14h00", "En attente", COLOR_WARNING));
         card.add(list, BorderLayout.CENTER);
 
         JPanel barSection = new JPanel(new BorderLayout());
@@ -405,12 +427,12 @@ public class MenuPrincipalJFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
-            catch (Exception ignored) {}
-            new MenuPrincipalJFrame().setVisible(true);
-        });
-    }
+    SwingUtilities.invokeLater(() -> {
+        try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
+        catch (Exception ignored) {}
+        new MenuPrincipalJFrame("Administrateur").setVisible(true);
+    });
+}
 }
 
 /**

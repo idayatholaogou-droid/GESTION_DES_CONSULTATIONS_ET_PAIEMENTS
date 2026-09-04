@@ -21,26 +21,26 @@ public class MedecinJpaController {
             return null;
         }
     }
- 
-    // ── INSÉRER ──────────────────────────────────────────────
-    public boolean inserer(Medecin m) {
-        String sql = "INSERT INTO medecin(\"IdMedecin\", \"NomMedecin\", \"PrenomMedecin\", \"Specialite\", \"EmailMedecin\") VALUES(?,?,?,?,?)";
-        try {
-            Connection conn = getConn();
-             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, m.getIdMedecin());
-            ps.setString(2, m.getNomMedecin());
-            ps.setString(3, m.getPrenomMedecin());
-            ps.setString(4, m.getSpecialite());
-            ps.setString(5, m.getEmailMedecin());
-            return ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+
+   
+ public boolean inserer(Medecin m) {
+    String sql = "INSERT INTO medecin(\"IdMedecin\", \"NomMedecin\", \"PrenomMedecin\", \"Specialite\", \"EmailMedecin\", \"MotDePasse\") VALUES(?,?,?,?,?,?)";
+    try {
+        Connection conn = getConn();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, m.getIdMedecin());
+        ps.setString(2, m.getNomMedecin());
+        ps.setString(3, m.getPrenomMedecin());
+        ps.setString(4, m.getSpecialite());
+        ps.setString(5, m.getEmailMedecin());
+        ps.setString(6, m.getMotDePasse());
+        return ps.executeUpdate() > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
     }
- 
-    // ── MODIFIER ─────────────────────────────────────────────
+}
+
     public boolean modifier(Medecin m) {
         String sql = "UPDATE medecin SET \"NomMedecin\"=?, \"PrenomMedecin\"=?, \"Specialite\"=?, \"EmailMedecin\"=? WHERE \"IdMedecin\"=?";
         try {
@@ -57,8 +57,7 @@ public class MedecinJpaController {
             return false;
         }
     }
- 
-    // ── SUPPRIMER ────────────────────────────────────────────
+
     public boolean supprimer(String id) {
         String sql = "DELETE FROM medecin WHERE \"IdMedecin\"=?";
         try {
@@ -71,8 +70,7 @@ public class MedecinJpaController {
             return false;
         }
     }
- 
-    // ── TROUVER PAR ID ───────────────────────────────────────
+
     public Medecin trouverParId(String id) {
         String sql = "SELECT * FROM medecin WHERE \"IdMedecin\"=?";
         try {
@@ -86,8 +84,7 @@ public class MedecinJpaController {
         }
         return null;
     }
- 
-    // ── LISTER TOUS ──────────────────────────────────────────
+
     public List<Medecin> listerTous() {
         List<Medecin> liste = new ArrayList<>();
         String sql = "SELECT * FROM medecin ORDER BY \"NomMedecin\"";
@@ -101,8 +98,7 @@ public class MedecinJpaController {
         }
         return liste;
     }
- 
-    // ── RECHERCHER PAR NOM ───────────────────────────────────
+
     public List<Medecin> rechercherParNom(String nom) {
         List<Medecin> liste = new ArrayList<>();
         String sql = "SELECT * FROM medecin WHERE LOWER(\"NomMedecin\") LIKE LOWER(?)";
