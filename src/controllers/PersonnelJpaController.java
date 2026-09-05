@@ -62,6 +62,34 @@ public class PersonnelJpaController {
         return liste;
     }
     
+    public boolean supprimer(String id) {
+        String sql = "DELETE FROM personnel WHERE \"IdPersonnel\"=?";
+        try {
+            Connection conn = getConn();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+         e.printStackTrace();
+        return false;
+    }
+    }
+
+    public boolean modifierRole(String id, String nouveauRole) {
+        String sql = "UPDATE personnel SET \"Role\"=? WHERE \"IdPersonnel\"=?";
+        try {
+            Connection conn = getConn();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, nouveauRole);
+            ps.setString(2, id);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+     
      private Personnel mapResultSet(ResultSet rs) throws SQLException {
         Personnel p = new Personnel();
         p.setIdPersonnel(rs.getString("IdPersonnel"));
@@ -71,4 +99,5 @@ public class PersonnelJpaController {
         p.setRole(rs.getString("Role"));
         return p;
     }
+       
 }

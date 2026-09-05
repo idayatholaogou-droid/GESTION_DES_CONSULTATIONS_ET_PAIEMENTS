@@ -190,6 +190,9 @@ public class MenuPrincipalJFrame extends JFrame {
     if (estAdmin || "Caissier".equals(roleConnecte) || "Médecin".equals(roleConnecte) || "Patient".equals(roleConnecte)) {
         boutonsAutorises.add(buildNavButton("Paiements", "Transactions et soldes", new Color(99, 179, 237)));
     }
+    if (estAdmin) {
+    boutonsAutorises.add(buildNavButton("Utilisateurs", "Gérer comptes et rôles", COLOR_DANGER));
+    }
 
     JPanel btnPanel = new JPanel(new GridLayout(boutonsAutorises.size(), 1, 0, 8));
     btnPanel.setOpaque(false);
