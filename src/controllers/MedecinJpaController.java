@@ -127,6 +127,34 @@ public class MedecinJpaController {
     }
     return null;
 }
+    public boolean enregistrerCodeReset(String email, String code, java.util.Date expiration) {
+    String sql = "UPDATE medecin SET \"CodeReset\"=?, \"DateExpirationCode\"=? WHERE \"EmailMedecin\"=?";
+    try {
+        Connection conn = getConn();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, code);
+        ps.setTimestamp(2, new java.sql.Timestamp(expiration.getTime()));
+        ps.setString(3, email);
+        return ps.executeUpdate() > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+    public boolean majMotDePasse(String email, String nouveauMotDePasse) {
+       String sql = "UPDATE medecin SET \"MotDePasse\"=?, \"CodeReset\"=NULL, \"DateExpirationCode\"=NULL WHERE \"EmailMedecin\"=?";
+        try {
+            Connection conn = getConn();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, nouveauMotDePasse);
+            ps.setString(2, email);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
   private Medecin mapResultSet(ResultSet rs) throws SQLException {
     Medecin m = new Medecin();
     m.setIdMedecin(rs.getString("IdMedecin"));
