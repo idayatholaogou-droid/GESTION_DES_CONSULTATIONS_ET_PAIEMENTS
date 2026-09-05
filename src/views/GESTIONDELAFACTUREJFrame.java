@@ -33,6 +33,19 @@ public class GESTIONDELAFACTUREJFrame extends javax.swing.JFrame {
         tableFacture.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
     }
     }
+    
+    public GESTIONDELAFACTUREJFrame(String role) {
+    initComponents();
+    chargerFacture();
+    DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+    centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+    for (int i = 0; i < tableFacture.getColumnCount(); i++) {
+        tableFacture.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+    }
+    if ("Médecin".equals(role) || "Patient".equals(role)) {
+        jButton2.setEnabled(false); // Enregistrer
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

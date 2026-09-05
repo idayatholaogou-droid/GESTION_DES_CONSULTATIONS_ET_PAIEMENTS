@@ -24,6 +24,15 @@ public class GESTIONDUPAIEMENTJFrame extends javax.swing.JFrame {
         initComponents();
         chargerPaiement();
     }
+    
+    public GESTIONDUPAIEMENTJFrame(String role) {
+    initComponents();
+    chargerPaiement();
+    if ("Médecin".equals(role) || "Patient".equals(role)) {
+        jButton2.setEnabled(false); 
+        jButton3.setEnabled(false); 
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

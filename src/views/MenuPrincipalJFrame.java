@@ -425,6 +425,7 @@ public class MenuPrincipalJFrame extends JFrame {
         switch (module) {
             case "Médecins"      -> new GESTIONDESMEDECINSJFrame().setVisible(true);
             case "Patients"      -> new GESTIONDESPATIENTSJFrame().setVisible(true);
+            case "Utilisateurs" -> new GestionUtilisateursJFrame().setVisible(true);
             case "Consultations" -> {
                 if ("Médecin".equals(roleConnecte)) {
                 new GESTIONDESCONSULTATIONSJFrame(idConnecte).setVisible(true);
@@ -432,9 +433,10 @@ public class MenuPrincipalJFrame extends JFrame {
                      new GESTIONDESCONSULTATIONSJFrame().setVisible(true);
                 }
                 }
-            case "Factures"      -> new GESTIONDELAFACTUREJFrame().setVisible(true);
-            case "Paiements"     -> new GESTIONDUPAIEMENTJFrame().setVisible(true);
+            case "Factures" -> new GESTIONDELAFACTUREJFrame(roleConnecte).setVisible(true);
+            case "Paiements" -> new GESTIONDUPAIEMENTJFrame(roleConnecte).setVisible(true);
         }
+        
     }
 
     public static void main(String[] args) {
