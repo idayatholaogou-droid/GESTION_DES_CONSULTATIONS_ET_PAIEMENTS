@@ -19,6 +19,9 @@ public class INSCRIPTIONJFrame extends javax.swing.JFrame {
     public INSCRIPTIONJFrame() {
         initComponents();
         remplirComboIndicatifs();
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo.png")));
+        btnCreerCompte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Créer_Compte_24.png")));
 }
 
 private java.util.List<entities.Pays> tousLesPays;
@@ -121,6 +124,7 @@ private static class PaysRenderer extends javax.swing.DefaultListCellRenderer {
         txtConfirmerMotDePasse = new javax.swing.JPasswordField();
         cbIndicatif = new javax.swing.JComboBox<>();
         txtTelephone = new javax.swing.JTextField();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 255));
@@ -143,8 +147,7 @@ private static class PaysRenderer extends javax.swing.DefaultListCellRenderer {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -202,6 +205,9 @@ private static class PaysRenderer extends javax.swing.DefaultListCellRenderer {
 
         txtTelephone.setText("jTextField1");
 
+        lblLogo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblLogo.setText("Logo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -257,13 +263,19 @@ private static class PaysRenderer extends javax.swing.DefaultListCellRenderer {
                                             .addComponent(txtPrenom))))
                                 .addGap(250, 250, 250)))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lblLogo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(13, 13, 13)
+                .addComponent(lblLogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,7 +314,7 @@ private static class PaysRenderer extends javax.swing.DefaultListCellRenderer {
                 .addComponent(txtSpecialite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnCreerCompte)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -468,6 +480,7 @@ entities.Pays paysChoisi = (entities.Pays) selection;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JTextField txtAge;
     private javax.swing.JPasswordField txtConfirmerMotDePasse;
     private javax.swing.JTextField txtEmail;

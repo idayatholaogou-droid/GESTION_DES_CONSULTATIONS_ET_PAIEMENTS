@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,8 @@ public class VérificationDuCodeJFrame extends javax.swing.JFrame {
      */
     public VérificationDuCodeJFrame() {
         initComponents();
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Vérifier_24.png")));
     }
 
     /**
@@ -116,11 +119,63 @@ public class VérificationDuCodeJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String codeSaisi = jTextField1.getText().trim();
+
+    controllers.PatientJpaController patientCtrl = new controllers.PatientJpaController();
+    controllers.MedecinJpaController medecinCtrl = new controllers.MedecinJpaController();
+
+    entities.Patient patient = patientCtrl.trouverParEmail(emailEnCours);
+    entities.Medecin medecin = medecinCtrl.trouverParEmail(emailEnCours);
+
+    String codeAttendu = null;
+    java.util.Date expiration = null;
+    boolean estPatient = patient != null;
+
+    if (estPatient) {
+        codeAttendu = patient.getCodeReset();
+        expiration = patient.getDateExpirationCode();
+    } else if (medecin != null) {
+        codeAttendu = medecin.getCodeReset();
+        expiration = medecin.getDateExpirationCode();
+    }
+
+    if (codeAttendu == null || !codeAttendu.equals(codeSaisi)) {
+        JOptionPane.showMessageDialog(this, "Code incorrect.", "Erreur", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (expiration == null || expiration.before(new java.util.Date())) {
+        JOptionPane.showMessageDialog(this, "Ce code a expiré. Recommencez la procédure.", "Erreur", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    String nouveauMotDePasse = JOptionPane.showInputDialog(this, "Code valide ! Entrez votre nouveau mot de passe :");
+    if (nouveauMotDePasse == null || nouveauMotDePasse.trim().isEmpty()) {
+        return;
+    }
+
+    boolean succes = estPatient
+        ? patientCtrl.majMotDePasse(emailEnCours, nouveauMotDePasse.trim())
+        : medecinCtrl.majMotDePasse(emailEnCours, nouveauMotDePasse.trim());
+
+    if (succes) {
+        JOptionPane.showMessageDialog(this, "Mot de passe modifié avec succès !");
         CONNEXIONJFrame con = new CONNEXIONJFrame();
         con.setLocationRelativeTo(null);
         con.setResizable(false);
         con.setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Erreur lors de la mise à jour.", "Erreur", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private String emailEnCours;
+
+    public VérificationDuCodeJFrame(String email) {
+        initComponents();
+        this.emailEnCours = email;
+    }
 
     /**
      * @param args the command line arguments

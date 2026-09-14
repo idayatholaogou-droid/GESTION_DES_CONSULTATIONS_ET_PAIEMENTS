@@ -32,6 +32,9 @@ public class GESTIONDELAFACTUREJFrame extends javax.swing.JFrame {
     for (int i = 0; i < tableFacture.getColumnCount(); i++) {
         tableFacture.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
     }
+    jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Enregistrer_24.png")));
+    jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Imprimer_24.png")));
+    jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
     }
     
     public GESTIONDELAFACTUREJFrame(String role) {
@@ -88,10 +91,10 @@ public class GESTIONDELAFACTUREJFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(159, 159, 159)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addGap(141, 141, 141))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +155,7 @@ public class GESTIONDELAFACTUREJFrame extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addGap(202, 202, 202)
                 .addComponent(jButton5)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,43 +191,38 @@ public class GESTIONDELAFACTUREJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 5, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 5, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(txtIdFacture, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                                    .addComponent(txtDateFacture)
-                                                    .addComponent(txtStatut)))
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(58, 58, 58)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(47, 47, 47)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtMontFacture)
-                                                    .addComponent(cmbIdConsult, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(cmbIdPaie, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(txtIdFacture, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDateFacture, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtStatut, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(58, 58, 58)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtMontFacture)
+                                    .addComponent(cmbIdPaie, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbIdConsult, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(130, 130, 130))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(96, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,33 +270,33 @@ public class GESTIONDELAFACTUREJFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         if (txtIdFacture.getText().trim().isEmpty()) {
-    JOptionPane.showMessageDialog(this, "L'ID est obligatoire.", "Erreur", JOptionPane.ERROR_MESSAGE);
-    return;
-}
-FactureJpaController dao = new FactureJpaController();
-Facture f= new Facture();
-f.setIdFacture(txtIdFacture.getText().trim());
-try {
-    f.setDateFacture(new java.util.Date(
-        java.sql.Date.valueOf(txtDateFacture.getText().trim()).getTime()
-    ));
-} catch (IllegalArgumentException e) {
-    JOptionPane.showMessageDialog(this,
-        "Format date invalide ! Utilisez AAAA-MM-JJ",
-        "Erreur", JOptionPane.ERROR_MESSAGE);
-    return;
-}
-f.setStatut(txtStatut.getText().trim());
-f.setMontFacture(Double.parseDouble(txtMontFacture.getText().trim()));
-f.setIdConsult(cmbIdConsult.getSelectedItem().toString().trim());
-f.setIdPaie(cmbIdPaie.getSelectedItem().toString().trim());
-if (dao.inserer(f)) {
-    JOptionPane.showMessageDialog(this, "Consultation enregistrée !");
-    chargerFacture();
-    viderChamps();
-} else {
-    JOptionPane.showMessageDialog(this, "Erreur enregistrement.", "Erreur", JOptionPane.ERROR_MESSAGE);
-}
+            JOptionPane.showMessageDialog(this, "L'ID est obligatoire.", "Erreur", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        FactureJpaController dao = new FactureJpaController();
+        Facture f= new Facture();
+        f.setIdFacture(txtIdFacture.getText().trim());
+        try {
+            f.setDateFacture(new java.util.Date(
+            java.sql.Date.valueOf(txtDateFacture.getText().trim()).getTime()
+        ));
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this,
+            "Format date invalide ! Utilisez AAAA-MM-JJ",
+            "Erreur", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+        f.setStatut(txtStatut.getText().trim());
+        f.setMontFacture(Double.parseDouble(txtMontFacture.getText().trim()));
+        f.setIdConsult(cmbIdConsult.getSelectedItem().toString().trim());
+        f.setIdPaie(cmbIdPaie.getSelectedItem().toString().trim());
+        if (dao.inserer(f)) {
+            JOptionPane.showMessageDialog(this, "Consultation enregistrée !");
+            chargerFacture();
+            viderChamps();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erreur enregistrement.", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
      
     }//GEN-LAST:event_jButton2ActionPerformed
 

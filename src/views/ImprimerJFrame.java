@@ -23,6 +23,8 @@ public class ImprimerJFrame extends javax.swing.JFrame {
      */
     public ImprimerJFrame() {
         initComponents();
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Imprimer_24.png")));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
     }
 
     /**

@@ -24,6 +24,11 @@ public class GESTIONDESMEDECINSJFrame extends javax.swing.JFrame {
     public GESTIONDESMEDECINSJFrame() {
         initComponents();
         chargerMedecin();
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Ajouter_24.png")));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Enregistrer_24.png")));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Modifier_24.png")));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Supprimer_24.png")));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
     }
 
     /**

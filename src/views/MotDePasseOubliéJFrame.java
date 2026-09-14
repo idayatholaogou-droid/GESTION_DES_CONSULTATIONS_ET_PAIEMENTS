@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,8 @@ public class MotDePasseOubliéJFrame extends javax.swing.JFrame {
      */
     public MotDePasseOubliéJFrame() {
         initComponents();
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Envoyez_Code_24.png")));
     }
 
     /**
@@ -115,10 +118,43 @@ public class MotDePasseOubliéJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        VérificationDuCodeJFrame code = new VérificationDuCodeJFrame();
-        code.setLocationRelativeTo(null);
-        code.setResizable(false);
-        code.setVisible(true);
+        String email = jTextField1.getText().trim();
+    if (email.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Veuillez saisir votre email.", "Erreur", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    controllers.PatientJpaController patientCtrl = new controllers.PatientJpaController();
+    controllers.MedecinJpaController medecinCtrl = new controllers.MedecinJpaController();
+
+    boolean estPatient = patientCtrl.trouverParEmail(email) != null;
+    boolean estMedecin = medecinCtrl.trouverParEmail(email) != null;
+
+    if (!estPatient && !estMedecin) {
+        JOptionPane.showMessageDialog(this, "Aucun compte trouvé avec cet email.", "Erreur", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    String code = String.valueOf((int) (Math.random() * 900000) + 100000); // 6 chiffres
+    java.util.Date expiration = new java.util.Date(System.currentTimeMillis() + 15 * 60 * 1000); // +15 min
+
+    boolean succes = estPatient
+        ? patientCtrl.enregistrerCodeReset(email, code, expiration)
+        : medecinCtrl.enregistrerCodeReset(email, code, expiration);
+
+    if (succes) {
+        JOptionPane.showMessageDialog(this,
+            "Code envoyé (simulation) : " + code + "\nCe code expire dans 15 minutes.",
+            "Code de vérification", JOptionPane.INFORMATION_MESSAGE);
+
+        views.VérificationDuCodeJFrame vc = new views.VérificationDuCodeJFrame(email);
+        vc.setLocationRelativeTo(null);
+        vc.setResizable(false);
+        vc.setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Erreur lors de la génération du code.", "Erreur", JOptionPane.ERROR_MESSAGE);
+    }
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

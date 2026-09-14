@@ -18,6 +18,9 @@ public class GestionUtilisateursJFrame extends javax.swing.JFrame {
     public GestionUtilisateursJFrame() {
         initComponents();
         chargerUtilisateurs();
+        btnModifier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Modifier_24.png")));
+        btnSupprimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Supprimer_24.png")));
+        btnFermer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
     }
 
     /**

@@ -23,6 +23,9 @@ public class GESTIONDUPAIEMENTJFrame extends javax.swing.JFrame {
     public GESTIONDUPAIEMENTJFrame() {
         initComponents();
         chargerPaiement();
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Valider_Paiement_24.png")));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Annuler_Paiement_24.png")));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
     }
     
     public GESTIONDUPAIEMENTJFrame(String role) {

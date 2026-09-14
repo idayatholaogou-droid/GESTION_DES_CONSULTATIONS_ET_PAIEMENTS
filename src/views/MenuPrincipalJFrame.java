@@ -82,25 +82,32 @@ public class MenuPrincipalJFrame extends JFrame {
         dateLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         dateLabel.setForeground(new Color(181, 212, 244));
 
-        JPanel left = new JPanel(new GridLayout(2, 1));
-        left.setOpaque(false);
-        left.add(title);
-        left.add(dateLabel);
+            JPanel left = new JPanel(new GridLayout(2, 1));
+            left.setOpaque(false);
+            left.add(title);
+            left.add(dateLabel);
 
-        JPanel onlinePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 6, 0));
-        onlinePanel.setOpaque(false);
-        JLabel dot = new JLabel("●");
-        dot.setForeground(new Color(74, 222, 128));
-        dot.setFont(new Font("Segoe UI", Font.PLAIN, 10));
-        JLabel onlineLbl = new JLabel("En ligne");
-        onlineLbl.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        onlineLbl.setForeground(new Color(181, 212, 244));
-        onlinePanel.add(dot);
-        onlinePanel.add(onlineLbl);
+            JLabel logoLabel = new JLabel(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_40.png")));
 
-        header.add(left, BorderLayout.WEST);
-        header.add(onlinePanel, BorderLayout.EAST);
-        return header;
+            JPanel leftAvecLogo = new JPanel(new BorderLayout(10, 0));
+            leftAvecLogo.setOpaque(false);
+            leftAvecLogo.add(logoLabel, BorderLayout.WEST);
+            leftAvecLogo.add(left, BorderLayout.CENTER);
+
+            JPanel onlinePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 6, 0));
+            onlinePanel.setOpaque(false);
+            JLabel dot = new JLabel("●");
+            dot.setForeground(new Color(74, 222, 128));
+            dot.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+            JLabel onlineLbl = new JLabel("En ligne");
+            onlineLbl.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            onlineLbl.setForeground(new Color(181, 212, 244));
+            onlinePanel.add(dot);
+            onlinePanel.add(onlineLbl);
+
+            header.add(leftAvecLogo, BorderLayout.WEST);
+            header.add(onlinePanel, BorderLayout.EAST);
+            return header;
     }
 
     private JPanel buildStatsRow() {
@@ -252,11 +259,18 @@ public class MenuPrincipalJFrame extends JFrame {
         };
         iconBox.setPreferredSize(new Dimension(36, 36));
         iconBox.setOpaque(false);
-        JLabel ico = new JLabel(label.substring(0, 1), SwingConstants.CENTER);
-        ico.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        ico.setForeground(accent.darker());
-        iconBox.add(ico, BorderLayout.CENTER);
+        String nomFichier = nomFichierIcone(label);
+        java.net.URL url = (nomFichier != null) ? getClass().getResource("/views/images/" + nomFichier + "_40.png") : null;
 
+        if (url != null) {
+            JLabel ico = new JLabel(new javax.swing.ImageIcon(url));
+            iconBox.add(ico, BorderLayout.CENTER);
+        } else {
+            JLabel ico = new JLabel(label.substring(0, 1), SwingConstants.CENTER);
+            ico.setFont(new Font("Segoe UI", Font.BOLD, 14));
+            ico.setForeground(accent.darker());
+            iconBox.add(ico, BorderLayout.CENTER);
+        }
         JPanel text = new JPanel(new GridLayout(2, 1));
         text.setOpaque(false);
         JLabel lbl = new JLabel(label);
@@ -277,6 +291,18 @@ public class MenuPrincipalJFrame extends JFrame {
         btn.add(arrow, BorderLayout.EAST);
         return btn;
     }
+    
+    private String nomFichierIcone(String label) {
+    switch (label) {
+        case "Médecins": return "Medecins";
+        case "Patients": return "Profil";
+        case "Consultations": return "Consultations";
+        case "Factures": return "Factures";
+        case "Paiements": return "Paiements";
+        case "Utilisateurs": return "Utilisateurs";
+        default: return null;
+    }
+}
 
     private JPanel buildPatientsCard() {
         JPanel card = createRoundedCard(12);
