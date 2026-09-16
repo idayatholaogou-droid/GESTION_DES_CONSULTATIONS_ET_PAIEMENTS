@@ -24,7 +24,7 @@ public class CONNEXIONJFrame extends javax.swing.JFrame {
         btnConnecter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Se_Connecter_24.png")));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Enregistrer_24.png")));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Mot_de_Passe_Oublié_24.png")));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Mot_de_passe_24.png")));
     }
 
     /**
@@ -254,7 +254,7 @@ public class CONNEXIONJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     INSCRIPTIONJFrame inscription = new INSCRIPTIONJFrame();
     inscription.setLocationRelativeTo(null);
-    inscription.setResizable(false);
+    inscription.setResizable(true);
     inscription.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 

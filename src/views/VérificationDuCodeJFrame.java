@@ -19,7 +19,7 @@ public class VérificationDuCodeJFrame extends javax.swing.JFrame {
     public VérificationDuCodeJFrame() {
         initComponents();
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Vérifier_24.png")));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Reinitialiser_mdp_24.png")));
     }
 
     /**

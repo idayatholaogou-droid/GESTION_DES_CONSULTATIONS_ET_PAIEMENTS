@@ -19,7 +19,7 @@ public class MotDePasseOubliéJFrame extends javax.swing.JFrame {
     public MotDePasseOubliéJFrame() {
         initComponents();
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Envoyez_Code_24.png")));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Reinitialiser_mdp_24.png")));
     }
 
     /**

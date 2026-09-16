@@ -5,7 +5,6 @@
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>GESTIONDESCONSULTATIONSTEPAIEMENTS</name>
             <source-roots>
-                <root id="src.jasperreports-7.0.6-project%20(1).dir"/>
                 <root id="src.dir"/>
                 <root id="src.META-INF.dir"/>
             </source-roots>
