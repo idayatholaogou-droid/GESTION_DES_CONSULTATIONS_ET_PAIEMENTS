@@ -23,6 +23,7 @@ public class GESTIONDUPAIEMENTJFrame extends javax.swing.JFrame {
     public GESTIONDUPAIEMENTJFrame() {
         initComponents();
         chargerPaiement();
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Valider_Paiement_24.png")));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Annuler_Paiement_24.png")));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
@@ -31,9 +32,13 @@ public class GESTIONDUPAIEMENTJFrame extends javax.swing.JFrame {
     public GESTIONDUPAIEMENTJFrame(String role) {
     initComponents();
     chargerPaiement();
-    if ("Médecin".equals(role) || "Patient".equals(role)) {
-        jButton2.setEnabled(false); 
-        jButton3.setEnabled(false); 
+    setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
+    jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Paiements_24.png")));
+    jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Paiements_24.png")));
+    jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
+    if ("Médecin".equals(role)) {
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
     }
 }
 

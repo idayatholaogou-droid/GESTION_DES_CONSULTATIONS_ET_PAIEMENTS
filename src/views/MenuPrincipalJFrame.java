@@ -33,20 +33,20 @@ public class MenuPrincipalJFrame extends JFrame {
     private String idConnecte;
 
     public MenuPrincipalJFrame(String role, String idConnecte) {
-        this.roleConnecte = role;
-        this.idConnecte = idConnecte;
-        setTitle("Système de Gestion Médicale");
-        setSize(960, 620);
-        setMinimumSize(new Dimension(800, 550));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        initComponents();
-    }
+    this.roleConnecte = role;
+    this.idConnecte = idConnecte;
+    setTitle("Système de Gestion Médicale");
+    setSize(960, 620);
+    setMinimumSize(new Dimension(800, 550));
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setLocationRelativeTo(null);
+    initComponents();
+    setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
+}
     private void initComponents() {
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(COLOR_BG);
         root.add(buildHeader(), BorderLayout.NORTH);
-
         JPanel center = new JPanel(new BorderLayout(12, 12));
         center.setOpaque(false);
         center.setBorder(new EmptyBorder(12, 16, 16, 16));
@@ -87,7 +87,7 @@ public class MenuPrincipalJFrame extends JFrame {
             left.add(title);
             left.add(dateLabel);
 
-            JLabel logoLabel = new JLabel(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_40.png")));
+            JLabel logoLabel = new JLabel(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")));
 
             JPanel leftAvecLogo = new JPanel(new BorderLayout(10, 0));
             leftAvecLogo.setOpaque(false);

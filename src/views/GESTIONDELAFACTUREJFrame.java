@@ -32,6 +32,7 @@ public class GESTIONDELAFACTUREJFrame extends javax.swing.JFrame {
     for (int i = 0; i < tableFacture.getColumnCount(); i++) {
         tableFacture.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
     }
+    setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
     jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Enregistrer_24.png")));
     jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Imprimer_24.png")));
     jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
@@ -45,10 +46,15 @@ public class GESTIONDELAFACTUREJFrame extends javax.swing.JFrame {
     for (int i = 0; i < tableFacture.getColumnCount(); i++) {
         tableFacture.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
     }
+    setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
+    jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Enregistrer_24.png")));
+    jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Imprimer_24.png")));
+    jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
     if ("Médecin".equals(role) || "Patient".equals(role)) {
-        jButton2.setEnabled(false); // Enregistrer
+        jButton2.setEnabled(false); 
     }
 }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

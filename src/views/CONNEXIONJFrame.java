@@ -21,6 +21,7 @@ public class CONNEXIONJFrame extends javax.swing.JFrame {
         initComponents();
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo.png")));
+        lblLogo.setText("");
         btnConnecter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Se_Connecter_24.png")));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Enregistrer_24.png")));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
