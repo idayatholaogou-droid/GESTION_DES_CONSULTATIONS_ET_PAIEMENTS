@@ -23,6 +23,7 @@ public class ImprimerJFrame extends javax.swing.JFrame {
      */
     public ImprimerJFrame() {
         initComponents();
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo_icone_32.png")).getImage());
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Imprimer_24.png")));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/Fermer_24.png")));
     }
@@ -240,17 +241,17 @@ public class ImprimerJFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try {
-        // ── 1. Chemin du PDF généré ──────────────────────────────
+        //  Chemin du PDF généré 
         String cheminPdf = System.getProperty("user.home") + "/facture_"
                 + txtNumero.getText().trim() + ".pdf";
  
-        // ── 2. Création du document PDF ──────────────────────────
+        // Création du document PDF 
         Document doc = new Document(PageSize.A4, 40, 40, 40, 40);
         PdfWriter.getInstance(doc, new FileOutputStream(cheminPdf));
         doc.open();
  
-        // ── Couleurs ─────────────────────────────────────────────
-        BaseColor bleu      = new BaseColor(14, 165, 233);   // #0ea5e9
+        //  Couleurs
+        BaseColor bleu      = new BaseColor(14, 165, 233);  
         BaseColor bleuFonce = new BaseColor(2, 132, 199);
         BaseColor gris      = new BaseColor(248, 249, 250);
         BaseColor grisBord  = new BaseColor(220, 220, 220);
@@ -260,7 +261,7 @@ public class ImprimerJFrame extends javax.swing.JFrame {
         BaseColor noir      = BaseColor.BLACK;
         BaseColor grisTexte = new BaseColor(100, 100, 100);
  
-        // ── Polices ───────────────────────────────────────────────
+        //  Polices
         Font fontTitre    = new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD,   blanc);
         Font fontSousTitre= new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL, new BaseColor(220,240,255));
         Font fontFacture  = new Font(Font.FontFamily.HELVETICA, 22, Font.BOLD,   blanc);
@@ -274,9 +275,6 @@ public class ImprimerJFrame extends javax.swing.JFrame {
         Font fontMerci    = new Font(Font.FontFamily.HELVETICA, 10, Font.ITALIC,  grisTexte);
         Font fontStatut   = new Font(Font.FontFamily.HELVETICA, 9,  Font.BOLD,   vertTexte);
  
-        // ══════════════════════════════════════════════════════════
-        // EN-TÊTE BLEUE
-        // ══════════════════════════════════════════════════════════
         PdfPTable header = new PdfPTable(2);
         header.setWidthPercentage(100);
         header.setWidths(new float[]{1.5f, 1f});
@@ -310,9 +308,6 @@ public class ImprimerJFrame extends javax.swing.JFrame {
  
         doc.add(header);
  
-        // ══════════════════════════════════════════════════════════
-        // INFOS PATIENT + DÉTAILS FACTURE (2 colonnes)
-        // ══════════════════════════════════════════════════════════
         PdfPTable infos = new PdfPTable(2);
         infos.setWidthPercentage(100);
         infos.setWidths(new float[]{1f, 1f});
@@ -348,9 +343,6 @@ public class ImprimerJFrame extends javax.swing.JFrame {
  
         doc.add(infos);
  
-        // ══════════════════════════════════════════════════════════
-        // TABLEAU DES SERVICES
-        // ══════════════════════════════════════════════════════════
         PdfPTable tableau = new PdfPTable(3);
         tableau.setWidthPercentage(100);
         tableau.setWidths(new float[]{2f, 2.5f, 1.5f});
@@ -386,17 +378,13 @@ public class ImprimerJFrame extends javax.swing.JFrame {
         }
  
         doc.add(tableau);
- 
-        // ══════════════════════════════════════════════════════════
-        // TOTAL
-        // ══════════════════════════════════════════════════════════
+
         PdfPTable totalTable = new PdfPTable(2);
         totalTable.setWidthPercentage(40);
         totalTable.setHorizontalAlignment(Element.ALIGN_RIGHT);
         totalTable.setWidths(new float[]{1f, 1f});
         totalTable.setSpacingAfter(20);
- 
-        // Ligne Total
+
         PdfPCell cellTotalLabel = new PdfPCell(new Phrase("Total", fontTotal));
         cellTotalLabel.setBorder(Rectangle.TOP);
         cellTotalLabel.setBorderColor(grisBord);
@@ -414,14 +402,10 @@ public class ImprimerJFrame extends javax.swing.JFrame {
  
         doc.add(totalTable);
  
-        // ══════════════════════════════════════════════════════════
-        // PIED DE PAGE : statut + merci
-        // ══════════════════════════════════════════════════════════
         PdfPTable pied = new PdfPTable(3);
         pied.setWidthPercentage(100);
         pied.setWidths(new float[]{1f, 2f, 1f});
  
-        // Badge "Payé"
         PdfPCell cellStatut = new PdfPCell(new Phrase("  Payé  ", fontStatut));
         cellStatut.setBackgroundColor(vert);
         cellStatut.setBorderColor(new BaseColor(134, 239, 172));
@@ -430,14 +414,14 @@ public class ImprimerJFrame extends javax.swing.JFrame {
         cellStatut.setHorizontalAlignment(Element.ALIGN_LEFT);
         pied.addCell(cellStatut);
  
-        // Merci
+        
         PdfPCell cellMerci = new PdfPCell(new Phrase("Merci pour votre confiance", fontMerci));
         cellMerci.setBorder(Rectangle.NO_BORDER);
         cellMerci.setHorizontalAlignment(Element.ALIGN_CENTER);
         cellMerci.setPadding(6);
         pied.addCell(cellMerci);
  
-        // Mode paiement
+        
         PdfPCell cellMode = new PdfPCell(new Phrase("Mode : Espèces", fontValeur2));
         cellMode.setBorder(Rectangle.NO_BORDER);
         cellMode.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -447,13 +431,12 @@ public class ImprimerJFrame extends javax.swing.JFrame {
         doc.add(pied);
         doc.close();
  
-        // ── 3. Ouvrir + imprimer le PDF ──────────────────────────
+        //  Ouvrir + imprimer le PDF 
         File fichierPdf = new File(cheminPdf);
         if (Desktop.isDesktopSupported()) {
-            Desktop.getDesktop().open(fichierPdf); // ouvre le PDF
+            Desktop.getDesktop().open(fichierPdf); 
         }
  
-        // Impression directe
         PrinterJob job = PrinterJob.getPrinterJob();
         if (job.printDialog()) {
             job.print();

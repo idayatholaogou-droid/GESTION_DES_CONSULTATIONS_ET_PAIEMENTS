@@ -410,7 +410,7 @@ entities.Pays paysChoisi = (entities.Pays) selection;
             JOptionPane.showMessageDialog(this, "Erreur lors de la création du compte.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
 
-    } else if ("Secrétaire".equals(role) || "Caissier".equals(role) || "Administrateur".equals(role)) {
+    } else if ("Sécrétaire".equals(role) || "Caissier".equals(role) || "Administrateur".equals(role)) {
     controllers.PersonnelJpaController ctrl = new controllers.PersonnelJpaController();
     if (ctrl.trouverParEmail(email) != null) {
         JOptionPane.showMessageDialog(this, "Cet email est déjà utilisé.", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -431,7 +431,7 @@ entities.Pays paysChoisi = (entities.Pays) selection;
     }
 }
     }
-// ── Génère le prochain identifiant (ex: P007, M010, E003) ──
+
     private String genererProchainId(int nombreExistant, String prefixe) {
     int prochain = nombreExistant + 1;
     return String.format("%s%03d", prefixe, prochain);
