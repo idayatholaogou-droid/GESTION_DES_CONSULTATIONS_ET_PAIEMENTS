@@ -181,7 +181,7 @@ private static class PaysRenderer extends javax.swing.DefaultListCellRenderer {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Mot de Passe");
 
-        cbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Médecin", "Sécrétaire", "Caissier", "Administrateur", "" }));
+        cbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Médecin", "Secrétaire", "Caissier", "Administrateur", "" }));
         cbRole.addActionListener(this::cbRoleActionPerformed);
 
         txtNom.addActionListener(this::txtNomActionPerformed);
@@ -410,7 +410,7 @@ entities.Pays paysChoisi = (entities.Pays) selection;
             JOptionPane.showMessageDialog(this, "Erreur lors de la création du compte.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
 
-    } else if ("Sécrétaire".equals(role) || "Caissier".equals(role) || "Administrateur".equals(role)) {
+    } else if ("Secrétaire".equals(role) || "Caissier".equals(role) || "Administrateur".equals(role)) {
     controllers.PersonnelJpaController ctrl = new controllers.PersonnelJpaController();
     if (ctrl.trouverParEmail(email) != null) {
         JOptionPane.showMessageDialog(this, "Cet email est déjà utilisé.", "Erreur", JOptionPane.ERROR_MESSAGE);

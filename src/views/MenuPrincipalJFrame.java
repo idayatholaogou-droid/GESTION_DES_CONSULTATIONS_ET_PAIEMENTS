@@ -188,9 +188,15 @@ public class MenuPrincipalJFrame extends JFrame {
     if (estAdmin || "Secrétaire".equals(roleConnecte)) {
         boutonsAutorises.add(buildNavButton("Patients", "Dossiers et historiques", COLOR_SUCCESS));
     }
+    
     if (estAdmin || "Secrétaire".equals(roleConnecte) || "Médecin".equals(roleConnecte) || "Patient".equals(roleConnecte)) {
         boutonsAutorises.add(buildNavButton("Consultations", "Planifier et suivre", COLOR_WARNING));
+    } 
+    
+    if (estAdmin || "Secrétaire".equals(roleConnecte) || "Patient".equals(roleConnecte) || "Médecin".equals(roleConnecte)) {
+        boutonsAutorises.add(buildNavButton("Rendez-vous", "Demander une consultation", COLOR_PRIMARY_LIGHT));
     }
+    
     if (estAdmin || "Caissier".equals(roleConnecte) || "Médecin".equals(roleConnecte) || "Patient".equals(roleConnecte)) {
         boutonsAutorises.add(buildNavButton("Factures", "Générer et exporter", COLOR_PURPLE));
     }
@@ -198,7 +204,7 @@ public class MenuPrincipalJFrame extends JFrame {
         boutonsAutorises.add(buildNavButton("Paiements", "Transactions et soldes", new Color(99, 179, 237)));
     }
     if (estAdmin) {
-    boutonsAutorises.add(buildNavButton("Utilisateurs", "Gérer comptes et rôles", COLOR_DANGER));
+        boutonsAutorises.add(buildNavButton("Utilisateurs", "Gérer comptes et rôles", COLOR_DANGER));
     }
 
     JPanel btnPanel = new JPanel(new GridLayout(boutonsAutorises.size(), 1, 0, 8));
@@ -459,6 +465,16 @@ public class MenuPrincipalJFrame extends JFrame {
                      new GESTIONDESCONSULTATIONSJFrame().setVisible(true);
                 }
                 }
+            
+            case "Rendez-vous" -> {
+                if ("Patient".equals(roleConnecte)) {
+                    new DemandeRendezVousJFrame(idConnecte).setVisible(true);
+                } else if ("Médecin".equals(roleConnecte)) {
+                    new GestionRendezVousJFrame(idConnecte).setVisible(true);
+                } else {
+                    new GestionRendezVousJFrame().setVisible(true);
+                }
+            }
             case "Factures" -> new GESTIONDELAFACTUREJFrame(roleConnecte).setVisible(true);
             case "Paiements" -> new GESTIONDUPAIEMENTJFrame(roleConnecte).setVisible(true);
         }

@@ -26,6 +26,24 @@ public class RendezVousJpaController {
             return false;
         }
     }
+    
+    public List<RendezVous> listerParMedecinEtStatut(String idMedecin, String statut) {
+    List<RendezVous> liste = new ArrayList<>();
+    String sql = "SELECT * FROM rendezvous WHERE \"IdMedecin\" = ? AND \"Statut\" = ? ORDER BY \"DateConfirmee\" ASC";
+    try (Connection conn = DatabaseConfig.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setString(1, idMedecin);
+        ps.setString(2, statut);
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                liste.add(mapper(rs));
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return liste;
+}
 
     public List<RendezVous> listerTous() {
         List<RendezVous> liste = new ArrayList<>();

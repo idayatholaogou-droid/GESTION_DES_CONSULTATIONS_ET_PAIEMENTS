@@ -54,20 +54,39 @@ public class GestionRendezVousJFrame extends JFrame {
 
         chargerDemandes();
     }
+    
+    private String idMedecinConnecte; // null si Secrétaire/Admin
+
+    public GestionRendezVousJFrame(String idMedecinConnecte) {
+        this();
+        this.idMedecinConnecte = idMedecinConnecte;
+        for (Component c : ((JPanel) getContentPane().getComponent(1)).getComponents()) {
+             if (c instanceof JButton bouton && !bouton.getText().equals("Fermer")) {
+                bouton.setVisible(false);
+        }
+            }
+        setTitle("Mes Rendez-vous Confirmés");
+        chargerDemandes();
+    }
 
     private void chargerDemandes() {
-        model.setRowCount(0);
-        List<RendezVous> liste = ctrl.listerParStatut("En attente");
-        for (RendezVous r : liste) {
-            model.addRow(new Object[]{
-                r.getIdRendezVous(),
-                r.getIdPatient(),
-                r.getDateSouhaitee(),
-                r.getMotif(),
-                r.getStatut()
-            });
-        }
+    model.setRowCount(0);
+    List<RendezVous> liste;
+    if (idMedecinConnecte != null) {
+        liste = ctrl.listerParMedecinEtStatut(idMedecinConnecte, "Confirmé");
+    } else {
+        liste = ctrl.listerParStatut("En attente");
     }
+    for (RendezVous r : liste) {
+        model.addRow(new Object[]{
+            r.getIdRendezVous(),
+            r.getIdPatient(),
+            r.getDateSouhaitee(),
+            r.getMotif(),
+            r.getStatut()
+        });
+    }
+}
 
     private void confirmerSelection() {
         int ligne = table.getSelectedRow();
