@@ -207,12 +207,22 @@ public class MenuPrincipalJFrame extends JFrame {
         boutonsAutorises.add(buildNavButton("Utilisateurs", "Gérer comptes et rôles", COLOR_DANGER));
     }
 
-    JPanel btnPanel = new JPanel(new GridLayout(boutonsAutorises.size(), 1, 0, 8));
+    JPanel btnPanel = new JPanel();
+    btnPanel.setLayout(new BoxLayout(btnPanel, BoxLayout.Y_AXIS));
     btnPanel.setOpaque(false);
     for (JPanel b : boutonsAutorises) {
+        b.setAlignmentX(Component.LEFT_ALIGNMENT);
+        b.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
         btnPanel.add(b);
+        btnPanel.add(Box.createVerticalStrut(8));
     }
-    card.add(btnPanel, BorderLayout.CENTER);
+
+    JScrollPane scrollNav = new JScrollPane(btnPanel);
+    scrollNav.setBorder(null);
+    scrollNav.setOpaque(false);
+    scrollNav.getViewport().setOpaque(false);
+    scrollNav.getVerticalScrollBar().setUnitIncrement(16);
+    card.add(scrollNav, BorderLayout.CENTER);
 
     JButton quit = new JButton("Quitter");
     quit.setFont(new Font("Segoe UI", Font.PLAIN, 11));
@@ -252,7 +262,7 @@ public class MenuPrincipalJFrame extends JFrame {
             }
         };
         btn.setBorder(new EmptyBorder(8, 10, 8, 10));
-        btn.setPreferredSize(new Dimension(0, 52));
+        btn.setPreferredSize(new Dimension(0, 60));
 
         JPanel iconBox = new JPanel(new BorderLayout()) {
             @Override protected void paintComponent(Graphics g) {
@@ -267,9 +277,11 @@ public class MenuPrincipalJFrame extends JFrame {
         iconBox.setOpaque(false);
         String nomFichier = nomFichierIcone(label);
         java.net.URL url = (nomFichier != null) ? getClass().getResource("/views/images/" + nomFichier + "_40.png") : null;
-
+        
         if (url != null) {
-            JLabel ico = new JLabel(new javax.swing.ImageIcon(url));
+            java.awt.Image img = new javax.swing.ImageIcon(url).getImage()
+            .getScaledInstance(22, 22, java.awt.Image.SCALE_SMOOTH);
+            JLabel ico = new JLabel(new javax.swing.ImageIcon(img));
             iconBox.add(ico, BorderLayout.CENTER);
         } else {
             JLabel ico = new JLabel(label.substring(0, 1), SwingConstants.CENTER);
@@ -277,15 +289,19 @@ public class MenuPrincipalJFrame extends JFrame {
             ico.setForeground(accent.darker());
             iconBox.add(ico, BorderLayout.CENTER);
         }
-        JPanel text = new JPanel(new GridLayout(2, 1));
+        JPanel text = new JPanel();
+        text.setLayout(new BoxLayout(text, BoxLayout.Y_AXIS));
         text.setOpaque(false);
         JLabel lbl = new JLabel(label);
         lbl.setFont(new Font("Segoe UI", Font.BOLD, 13));
         lbl.setForeground(COLOR_TEXT);
+        lbl.setAlignmentX(Component.LEFT_ALIGNMENT);
         JLabel sublbl = new JLabel(sub);
         sublbl.setFont(new Font("Segoe UI", Font.PLAIN, 11));
         sublbl.setForeground(COLOR_MUTED);
+        sublbl.setAlignmentX(Component.LEFT_ALIGNMENT);
         text.add(lbl);
+        text.add(Box.createVerticalStrut(3));
         text.add(sublbl);
 
         JLabel arrow = new JLabel("›");
